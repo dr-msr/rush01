@@ -1,24 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_check_dup.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrahim <mrahim@student.42kl.edu.my>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 13:22:05 by mrahim            #+#    #+#             */
+/*   Updated: 2023/09/24 13:27:55 by mrahim           ###   ########.KL       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "rush_01.h"
 
-int	ft_check(int **grid, int **clues, int row, int column)  // combine 4 criteria into binary output
+int	ft_check(int row, int column)
 {
-	if (
-      !check_col_up(grid, clues[0], row, column) || 
-		!check_col_down(grid, clues[1], row, column) ||
-		!check_row_left(grid, clues[2], row, column) ||
-		!check_row_right(grid, clues[3], row, column)
+	if (!check_col_up(g_clues[0], row, column)
+		|| !check_col_down(g_clues[1], row, column)
+		|| !check_row_left(g_clues[2], row, column)
+		|| !check_row_right(g_clues[3], row, column)
 	)
 		return (0);
 	return (1);
 }
 
-int ft_notDuplicate(int **grid, int row, int col, int num) {  // checks duplicate
-    int i = 0;
-    while (i < 4) {
-        if (grid[row][i] == num || grid[i][col] == num) { // runs through 1,2,3,4 if found anywhere within row/column
-            return 0;
-        }
-        i++;
-    }
-    return 1;
+int	ft_notduplicate(int row, int col, int num)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (g_grid[row][i] == num || g_grid[i][col] == num)
+		{
+			return (0);
+		}
+		i++;
+	}
+	return (1);
 }

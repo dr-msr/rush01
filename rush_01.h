@@ -1,44 +1,46 @@
-
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rush_01.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrahim <mrahim@student.42kl.edu.my>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/24 14:54:38 by mrahim            #+#    #+#             */
+/*   Updated: 2023/09/24 14:54:40 by mrahim           ###   ########.KL       */
+/*                                                                            */
+/* ************************************************************************** */
 #ifndef RUSH_01_H
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <unistd.h>
-#	define SIZE 4
 
-int 	**grid;
+int			**g_grid;
 
-int 	**clues;
+int			**g_clues;
 
-int 	validateinput(char *argv[]);
+int			validateinput(char	*argv[]);
 
-void 	printGrid(void) ;
+void		printgrid(void);
 
-void 	printClues(void);
+void		free_memory(void);
 
-void	free_memory(void);
+int			grid_initialisation(void);
 
-int 	grid_initialisation();
+int			clues_init(void);
 
-int 	clues_init();
+int			check_col_up(int clues[4], int row, int col);
 
-int		check_col_up(int **grid,int clues[4], int row, int col);
+int			check_col_down(int clues[4], int row, int col);
 
-int		check_col_down(int **grid, int clues[4], int row, int col);
+int			check_row_left(int clues[4], int row, int col);
 
-int		check_row_left(int **grid, int clues[4], int row, int col);
+int			check_row_right(int clues[4], int row, int col);
 
-int		check_row_right(int **grid, int clues[4], int row, int col);
+int			ft_check(int row, int column);
 
-int		ft_check(int **grid, int **clues, int row, int column);
+int			ft_notduplicate(int row, int col, int num);
 
-int 	ft_notDuplicate(int **grid, int row, int col, int num);
+int			ft_solve_next(int row, int col);
 
-int 	ft_solve(int **grid, int **clues, int row, int col);
+int			ft_solve(int row, int col);
 
-
-
-
+int			conversion(char *a);
 
 #endif
